@@ -4,6 +4,8 @@ CONFIG -= debug release
 CONFIG += qt debug console
 
 SOURCES = main.cpp \
-          thread.cpp
+          thread.cpp \
+          threadpool.cpp
 
-HEADERS = thread.h
+HEADERS = thread.h \
+          threadpool.h

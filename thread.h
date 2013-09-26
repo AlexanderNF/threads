@@ -9,6 +9,11 @@ class Thread : public QThread
 public:
 	Thread(int id, QObject *parent = 0);
 
+	int id() const;
+
+signals:
+	void postInfo(const QString &text);
+
 private:
 	int m_id;
 

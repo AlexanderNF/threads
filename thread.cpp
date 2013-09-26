@@ -4,7 +4,7 @@
 #include <QtCore/QDateTime>
 #include <QtCore/QTextStream>
 
-/*------- Thread class ----------------------------------*/
+/*------- Thread ----------------------------------------*/
 Thread::Thread(int id, QObject *parent)
 	: QThread(parent)
 {
@@ -13,15 +13,13 @@ Thread::Thread(int id, QObject *parent)
 
 void Thread::run()
 {
-	qsrand(QDateTime::currentMSecsSinceEpoch() / 1000);
-	int pauseDuration = qrand() % 5;
+	qsrand(QDateTime::currentMSecsSinceEpoch() / 1000 + m_id);
+	int pauseDuration = qrand() % 100;
 
 	sleep(pauseDuration);
+}
 
-	QTextStream out(stdout);
-	out << "Thread No." << m_id << ". HANDLER is " << currentThreadId();
-
-	QCoreApplication::processEvents();
-
-	// sleep(1000000);
+int Thread::id() const
+{
+	return m_id;
 }
